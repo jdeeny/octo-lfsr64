@@ -1,8 +1,8 @@
 # octo-lfsr64
 64-bit [LFSR](https://en.wikipedia.org/wiki/Linear-feedback_shift_register)-based PRNG implementation in Octo
 
-The LFSR has a period of 2^64-1, which is hopefully plenty for a chip8 game. All 8 bytes of state are used to produce a
-single byte of output, which hopefully masks patterns in the LFSR's sequence.
+All 8 bytes of state are used to produce a single byte of output, in an attempt to mask patterns in the LFSR's sequence. If you 
+have ideas about how to improve the output, please let me know.
 
 ## Usage
 
@@ -30,9 +30,8 @@ lfsr_collapse_output    # This turns the 64-bit state into a single 8-bit number
 vE := v1                # That number is returned in v1
 ```
 
-The ```lfsr_collapse_output``` function simply XORs the bytes of state together.
-The output could potentially be improved with something more complicated, but output quality seems OK. (Please let me know
-if you think otherwise, so it can be corrected.)
+The ```lfsr_collapse_output``` function simply XORs the bytes of state together. This could probably stand to be a bit more
+complicated.
 
 ## Saving State
 State can be saved with the ```lfsr_save_*``` functions and loaded with the ```lfsr_load_*``` functions.
