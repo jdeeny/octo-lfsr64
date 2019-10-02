@@ -17,15 +17,16 @@ v4 := random 0xFF
 v5 := random 0xFF
 v6 := random 0xFF
 v7 := random 0xFF
-save lfsr_state
+i := lfsr_state
+save v7
 ```
 
-You can seed the state with a constant value if you do want the same sequuence every time.
+You can seed the state with a constant value if you do want the same sequence every time.
 
 To get a sequence of pseudo-random values, you will need advance the state and collapse the output for each
 byte:
 ```octo
-lfsr_advance_state      # This must be called to go to the next number
+lfsr_advance            # This must be called to go to the next number
 lfsr_collapse_output    # This turns the 64-bit state into a single 8-bit number
 vE := v1                # That number is returned in v1
 ```
